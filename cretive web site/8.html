@@ -1,0 +1,305 @@
+
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My CV</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #e9edf2;
+    padding: 30px;
+    color: #222;
+}
+
+.cv {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+/* LEFT SIDE */
+
+.left {
+    background: #172337;
+    color: white;
+    padding: 35px 25px;
+}
+
+.profile {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+    border: 5px solid white;
+}
+
+.name {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.name h1 {
+    font-size: 25px;
+}
+
+.name p {
+    color: #61dafb;
+    margin-top: 8px;
+}
+
+.left h2 {
+    font-size: 17px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #61dafb;
+    padding-bottom: 7px;
+}
+
+.contact p,
+.details p {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.skills {
+    list-style: none;
+}
+
+.skills li {
+    margin: 13px 0;
+    font-size: 14px;
+}
+
+.bar {
+    height: 6px;
+    background: #39465a;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    background: #61dafb;
+    border-radius: 5px;
+}
+
+/* RIGHT SIDE */
+
+.right {
+    padding: 40px;
+}
+
+.section {
+    margin-bottom: 35px;
+}
+
+.section h2 {
+    color: #172337;
+    font-size: 22px;
+    border-bottom: 2px solid #61dafb;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.section p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.section ul {
+    margin-left: 20px;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .cv {
+        grid-template-columns: 1fr;
+    }
+
+    .left,
+    .right {
+        padding: 25px;
+    }
+
+    .profile {
+        width: 120px;
+        height: 120px;
+    }
+
+    .name h1 {
+        font-size: 22px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cv">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left">
+
+        <img src="profile.jpg" class="profile" alt="Profile Photo">
+
+        <div class="name">
+            <h1>𝔾𝔸𝔾𝔸ℕ𝔸 𝔹𝔸ℕ𝔻𝔸ℝ𝔸</h1>
+            <p>B̶i̶l̶e̶s̶h̶a̶ w̶e̶b̶ D̶e̶v̶e̶l̶o̶p̶e̶r̶</p>
+        </div>
+
+        <h2>Contact</h2>
+
+        <div class="contact">
+            <p>📞 0726879974</p>
+            <p>📧 gaganabandara66@email.com</p>
+            <p>📍 Sri Lanka</p>
+        </div>
+
+        <h2>Personal Details</h2>
+
+        <div class="details">
+            <p><b>Date of Birth:</b> 2008.07.23</p>
+            <p><b>Gender:</b> Male</p>
+            <p><b>Nationality:</b> Sri Lankan</p>
+            <p><b>Civil Status:</b> Unmarried</p>
+        </div>
+
+        <h2>Skills</h2>
+
+        <ul class="skills">
+
+            <li>
+                HTML
+                <div class="bar">
+                    <span style="width: 90%;"></span>
+                </div>
+            </li>
+
+            <li>
+                CSS
+                <div class="bar">
+                    <span style="width: 80%;"></span>
+                </div>
+            </li>
+
+            <li>
+                JavaScript
+                <div class="bar">
+                    <span style="width: 60%;"></span>
+                </div>
+            </li>
+
+            <li>
+                Microsoft Office
+                <div class="bar">
+                    <span style="width: 75%;"></span>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right">
+
+        <div class="section">
+
+            <h2>About Me</h2>
+
+            <p>
+                I am a hardworking, responsible and motivated person
+                with a strong interest in technology and web development.
+                I am willing to learn new skills and improve my knowledge
+                while working in a professional environment.
+            </p>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>Education</h2>
+
+            <ul>
+                <li>G.C.E. Ordinary Level Examination</li>
+                <li>School Education – Sri Lanka</li>
+            </ul>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>Experience</h2>
+
+            <p>
+                Currently developing my skills in HTML, CSS,
+                JavaScript and computer applications.
+            </p>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>Languages</h2>
+
+            <ul>
+                <li>Sinhala – Excellent</li>
+                <li>English – Basic</li>
+                <li>Tamil – Basic</li>
+            </ul>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>References</h2>
+
+            <p>
+                References can be provided upon request.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+```

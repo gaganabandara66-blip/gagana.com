@@ -1,0 +1,980 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Project Builder</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+    overflow:hidden;
+}
+
+/* TOP BAR */
+
+.topbar{
+    height:60px;
+    background:#111827;
+    border-bottom:1px solid #334155;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+.actions button{
+    border:0;
+    padding:9px 13px;
+    border-radius:7px;
+    margin-left:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.previewBtn{
+    background:#8b5cf6;
+    color:white;
+}
+
+.saveBtn{
+    background:#22c55e;
+    color:white;
+}
+
+.downloadBtn{
+    background:#3b82f6;
+    color:white;
+}
+
+/* MAIN */
+
+.main{
+    height:calc(100vh - 60px);
+    display:grid;
+    grid-template-columns:220px 1fr 260px;
+}
+
+/* LEFT TOOLBAR */
+
+.tools{
+    background:#111827;
+    border-right:1px solid #334155;
+    padding:15px;
+    overflow:auto;
+}
+
+.tools h3{
+    color:#94a3b8;
+    margin-bottom:15px;
+}
+
+.tool{
+    width:100%;
+    padding:12px;
+    margin-bottom:8px;
+    border:0;
+    border-radius:7px;
+    background:#1e293b;
+    color:white;
+    text-align:left;
+    cursor:pointer;
+}
+
+.tool:hover{
+    background:#334155;
+}
+
+/* WORK AREA */
+
+.workspace{
+    background:#1e293b;
+    padding:25px;
+    overflow:auto;
+}
+
+.project{
+    background:white;
+    color:#111827;
+    width:850px;
+    min-height:650px;
+    margin:auto;
+    padding:40px;
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+}
+
+/* RIGHT */
+
+.settings{
+    background:#111827;
+    border-left:1px solid #334155;
+    padding:18px;
+    overflow:auto;
+}
+
+.settings h3{
+    color:#38bdf8;
+    margin-bottom:20px;
+}
+
+.settings label{
+    display:block;
+    margin-top:14px;
+    margin-bottom:6px;
+    color:#cbd5e1;
+}
+
+.settings input,
+.settings textarea,
+.settings select{
+    width:100%;
+    padding:9px;
+    border-radius:6px;
+    border:1px solid #475569;
+    background:#1e293b;
+    color:white;
+}
+
+.settings textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.card{
+    background:#f1f5f9;
+    color:#111827;
+    padding:20px;
+    margin:15px 0;
+    border-radius:10px;
+}
+
+.hero{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    padding:50px 30px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.project-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 22px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.section-title{
+    font-size:28px;
+    margin:30px 0 10px;
+}
+
+.project-image{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+.footer{
+    margin-top:40px;
+    padding:20px;
+    text-align:center;
+    background:#111827;
+    color:white;
+    border-radius:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    body{
+        overflow:auto;
+    }
+
+    .main{
+        height:auto;
+        display:block;
+    }
+
+    .tools{
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+    }
+
+    .tools h3{
+        width:100%;
+    }
+
+    .tool{
+        width:auto;
+        margin:0;
+    }
+
+    .workspace{
+        min-height:700px;
+        padding:10px;
+    }
+
+    .project{
+        width:100%;
+        min-height:650px;
+        padding:20px;
+    }
+
+    .settings{
+        border-left:0;
+        border-top:1px solid #334155;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        🚀 Digital Project Builder
+    </div>
+
+    <div class="actions">
+
+        <button
+            class="previewBtn"
+            onclick="previewProject()">
+            👁 Preview
+        </button>
+
+        <button
+            class="saveBtn"
+            onclick="saveProject()">
+            💾 Save
+        </button>
+
+        <button
+            class="downloadBtn"
+            onclick="downloadProject()">
+            ⬇ HTML
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="main">
+
+    <!-- TOOLS -->
+
+    <aside class="tools">
+
+        <h3>PROJECT TOOLS</h3>
+
+        <button
+            class="tool"
+            onclick="addHero()">
+            🏠 Hero Section
+        </button>
+
+        <button
+            class="tool"
+            onclick="addText()">
+            📝 Text
+        </button>
+
+        <button
+            class="tool"
+            onclick="addCard()">
+            🗂️ Project Card
+        </button>
+
+        <button
+            class="tool"
+            onclick="addButton()">
+            🔘 Button
+        </button>
+
+        <button
+            class="tool"
+            onclick="addImage()">
+            🖼️ Image
+        </button>
+
+        <button
+            class="tool"
+            onclick="addTitle()">
+            🔤 Section Title
+        </button>
+
+        <button
+            class="tool"
+            onclick="addFooter()">
+            📌 Footer
+        </button>
+
+        <button
+            class="tool"
+            onclick="clearProject()">
+            🗑️ Clear Project
+        </button>
+
+    </aside>
+
+
+    <!-- PROJECT -->
+
+    <main class="workspace">
+
+        <div
+            class="project"
+            id="project">
+
+            <div class="hero">
+
+                <h1 id="heroTitle">
+                    My Digital Project
+                </h1>
+
+                <p id="heroText">
+                    Create something amazing with this project builder.
+                </p>
+
+                <a
+                    href="#"
+                    class="project-btn">
+                    Get Started
+                </a>
+
+            </div>
+
+            <h2 class="section-title">
+                About This Project
+            </h2>
+
+            <div class="card">
+
+                <p>
+                    This is your digital project workspace.
+                    Add your own text, images, buttons and
+                    sections using the tools on the left.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- SETTINGS -->
+
+    <aside class="settings">
+
+        <h3>⚙ Project Settings</h3>
+
+        <label>Project Name</label>
+
+        <input
+            id="projectName"
+            value="My Digital Project">
+
+
+        <label>Hero Title</label>
+
+        <input
+            id="heroTitleInput"
+            value="My Digital Project"
+            oninput="updateHero()">
+
+
+        <label>Hero Description</label>
+
+        <textarea
+            id="heroTextInput"
+            oninput="updateHero()">Create something amazing with this project builder.</textarea>
+
+
+        <label>Background Color</label>
+
+        <input
+            type="color"
+            id="bgColor"
+            value="#ffffff"
+            onchange="changeBackground()">
+
+
+        <label>Text Color</label>
+
+        <input
+            type="color"
+            id="textColor"
+            value="#111827"
+            onchange="changeTextColor()">
+
+
+        <label>Project Type</label>
+
+        <select id="projectType">
+
+            <option>Website</option>
+            <option>Portfolio</option>
+            <option>Business Project</option>
+            <option>School Project</option>
+            <option>Digital Product</option>
+            <option>Presentation</option>
+            <option>Other</option>
+
+        </select>
+
+    </aside>
+
+</div>
+
+
+<script>
+
+/* HERO */
+
+function updateHero(){
+
+    document.getElementById(
+        "heroTitle"
+    ).innerText =
+        document.getElementById(
+            "heroTitleInput"
+        ).value;
+
+    document.getElementById(
+        "heroText"
+    ).innerText =
+        document.getElementById(
+            "heroTextInput"
+        ).value;
+}
+
+
+/* ADD TEXT */
+
+function addText(){
+
+    let div =
+        document.createElement("div");
+
+    div.className="card";
+
+    div.innerHTML=`
+        <p>
+            ✨ Add your project information here.
+        </p>
+    `;
+
+    document.getElementById(
+        "project"
+    ).appendChild(div);
+
+}
+
+
+/* ADD CARD */
+
+function addCard(){
+
+    let card =
+        document.createElement("div");
+
+    card.className="card";
+
+    card.innerHTML=`
+        <h3>Project Feature</h3>
+        <p>
+            Describe your project feature,
+            service or idea here.
+        </p>
+    `;
+
+    document.getElementById(
+        "project"
+    ).appendChild(card);
+
+}
+
+
+/* ADD BUTTON */
+
+function addButton(){
+
+    let button =
+        document.createElement("a");
+
+    button.className="project-btn";
+
+    button.href="#";
+
+    button.innerText=
+        "Click Here";
+
+    document.getElementById(
+        "project"
+    ).appendChild(button);
+
+}
+
+
+/* ADD HERO */
+
+function addHero(){
+
+    let hero =
+        document.createElement("div");
+
+    hero.className="hero";
+
+    hero.innerHTML=`
+        <h1>New Project</h1>
+        <p>
+            Welcome to my digital project.
+        </p>
+    `;
+
+    document.getElementById(
+        "project"
+    ).appendChild(hero);
+
+}
+
+
+/* ADD TITLE */
+
+function addTitle(){
+
+    let title =
+        document.createElement("h2");
+
+    title.className=
+        "section-title";
+
+    title.innerText=
+        "New Section";
+
+    document.getElementById(
+        "project"
+    ).appendChild(title);
+
+}
+
+
+/* ADD IMAGE */
+
+function addImage(){
+
+    let url =
+        prompt(
+            "Enter image URL:"
+        );
+
+    if(!url)
+        return;
+
+    let img =
+        document.createElement("img");
+
+    img.src=url;
+
+    img.className=
+        "project-image";
+
+    document.getElementById(
+        "project"
+    ).appendChild(img);
+
+}
+
+
+/* FOOTER */
+
+function addFooter(){
+
+    let footer =
+        document.createElement("div");
+
+    footer.className="footer";
+
+    footer.innerText=
+        "© 2026 My Digital Project";
+
+    document.getElementById(
+        "project"
+    ).appendChild(footer);
+
+}
+
+
+/* BACKGROUND */
+
+function changeBackground(){
+
+    document.getElementById(
+        "project"
+    ).style.background =
+        document.getElementById(
+            "bgColor"
+        ).value;
+
+}
+
+
+/* TEXT COLOR */
+
+function changeTextColor(){
+
+    document.getElementById(
+        "project"
+    ).style.color =
+        document.getElementById(
+            "textColor"
+        ).value;
+
+}
+
+
+/* CLEAR */
+
+function clearProject(){
+
+    if(
+        confirm(
+            "Clear the whole project?"
+        )
+    ){
+
+        document.getElementById(
+            "project"
+        ).innerHTML="";
+
+    }
+
+}
+
+
+/* PREVIEW */
+
+function previewProject(){
+
+    let project =
+        document.getElementById(
+            "project"
+        );
+
+    let win =
+        window.open(
+            "",
+            "_blank"
+        );
+
+    win.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+        <title>
+        ${document.getElementById("projectName").value}
+        </title>
+
+        <style>
+
+        body{
+            font-family:Arial;
+            margin:0;
+            padding:30px;
+            background:#e5e7eb;
+        }
+
+        .project{
+            max-width:1000px;
+            margin:auto;
+            background:white;
+            padding:40px;
+        }
+
+        .hero{
+            background:linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+            color:white;
+            padding:60px 30px;
+            text-align:center;
+            border-radius:15px;
+        }
+
+        .hero h1{
+            font-size:42px;
+        }
+
+        .card{
+            background:#f1f5f9;
+            padding:20px;
+            margin:15px 0;
+            border-radius:10px;
+        }
+
+        .project-btn{
+            display:inline-block;
+            padding:12px 22px;
+            background:#111827;
+            color:white;
+            border-radius:8px;
+            text-decoration:none;
+            margin-top:20px;
+        }
+
+        .section-title{
+            margin-top:30px;
+        }
+
+        .project-image{
+            width:100%;
+            max-height:400px;
+            object-fit:cover;
+            border-radius:12px;
+        }
+
+        .footer{
+            margin-top:40px;
+            padding:20px;
+            background:#111827;
+            color:white;
+            text-align:center;
+        }
+
+        </style>
+
+        </head>
+
+        <body>
+
+        ${project.outerHTML}
+
+        </body>
+
+        </html>
+    `);
+
+    win.document.close();
+
+}
+
+
+/* SAVE */
+
+function saveProject(){
+
+    localStorage.setItem(
+        "digitalProject",
+        document.getElementById(
+            "project"
+        ).innerHTML
+    );
+
+    alert(
+        "Project saved successfully!"
+    );
+
+}
+
+
+/* LOAD */
+
+window.onload=function(){
+
+    let saved =
+        localStorage.getItem(
+            "digitalProject"
+        );
+
+    if(saved){
+
+        document.getElementById(
+            "project"
+        ).innerHTML=saved;
+
+    }
+
+}
+
+
+/* DOWNLOAD */
+
+function downloadProject(){
+
+    let project =
+        document.getElementById(
+            "project"
+        ).outerHTML;
+
+    let title =
+        document.getElementById(
+            "projectName"
+        ).value;
+
+    let html=`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>${title}</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#e5e7eb;
+    margin:0;
+    padding:30px;
+}
+
+.project{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:40px;
+}
+
+.hero{
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+    color:white;
+    padding:60px 30px;
+    text-align:center;
+    border-radius:15px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.card{
+    background:#f1f5f9;
+    padding:20px;
+    margin:15px 0;
+    border-radius:10px;
+}
+
+.project-btn{
+    display:inline-block;
+    padding:12px 22px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    margin-top:20px;
+}
+
+.section-title{
+    margin-top:30px;
+}
+
+.project-image{
+    width:100%;
+    max-height:400px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.footer{
+    margin-top:40px;
+    padding:20px;
+    background:#111827;
+    color:white;
+    text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+${project}
+
+</body>
+
+</html>
+`;
+
+    let blob =
+        new Blob(
+            [html],
+            {type:"text/html"}
+        );
+
+    let url =
+        URL.createObjectURL(blob);
+
+    let a =
+        document.createElement("a");
+
+    a.href=url;
+
+    a.download =
+        "digital-project.html";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+</script>
+
+</body>
+</html>
+```
